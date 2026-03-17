@@ -2,11 +2,11 @@ name: Build and Push Microservices
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
     paths:
-      - 'apps/**'
-      - 'k8s/**'
-      - '.github/workflows/**'
+      - "apps/**"
+      - "k8s/**"
+      - ".github/workflows/**"
 
 permissions:
   contents: write
@@ -19,20 +19,20 @@ jobs:
       matrix:
         include:
           - service_name: auth-service
-            context: .
-            dockerfile: apps/auth-service/Dockerfile
+            context: ./apps/auth-service
+            dockerfile: ./apps/auth-service/Dockerfile
             image_name: hasib-auth
             yaml_path: k8s/auth-service.yaml
 
           - service_name: user-service
-            context: .
-            dockerfile: apps/user-service/Dockerfile
+            context: ./apps/user-service
+            dockerfile: ./apps/user-service/Dockerfile
             image_name: hasib-user
             yaml_path: k8s/user-service.yaml
 
           - service_name: user-consumer
-            context: .
-            dockerfile: apps/user-service/Dockerfile.consumer
+            context: ./apps/user-service
+            dockerfile: ./apps/user-service/Dockerfile.consumer
             image_name: hasib-user-consumer
             yaml_path: k8s/user-consumer.yaml
 
