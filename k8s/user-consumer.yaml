@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: user-consumer
-          image: hasibarrafiulfahim/hasib-user-consumer:latest
+          image: hasibarrafiulfahim/hasib-user-consumer:a1c5aaf0c8ffbfe7597ba541549f096b6c9d5942
           imagePullPolicy: Always
           env:
             - name: RABBITMQ_HOST
