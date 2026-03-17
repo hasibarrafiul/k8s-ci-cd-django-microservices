@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-consumer
+  namespace: django-microservices
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: user-consumer
+  template:
+    metadata:
+      labels:
+        app: user-consumer
+    spec:
+      containers:
+        - name: user-consumer
+          image: hasibarrafiulfahim/hasib-user-consumer:latest
+          imagePullPolicy: Always
+          env:
+            - name: RABBITMQ_HOST
+              value: rabbitmq
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "300m"
+              memory: "256Mi"
